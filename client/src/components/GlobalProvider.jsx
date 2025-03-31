@@ -6,7 +6,7 @@ const GlobalProvider = ({children}) => {
 
     const [loading,setLoading] = useState(false)
     const [loggedIn,setLoggedIn] = useState(false)
-    const API_URL = 'http://localhost:8000';
+    const API_URL = 'https://blog-app-jbra.onrender.com';
 
     useEffect(()=>{
       const token = localStorage.getItem('token')
