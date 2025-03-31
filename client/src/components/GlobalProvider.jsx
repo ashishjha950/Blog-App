@@ -6,7 +6,7 @@ const GlobalProvider = ({children}) => {
 
     const [loading,setLoading] = useState(false)
     const [loggedIn,setLoggedIn] = useState(false)
-    const API_URL = 'http://localhost:8000';
+    const API_URL = 'https://blog-app-backend-19c1h9ofr-ashish-kumar-jhas-projects.vercel.app';
 
     useEffect(()=>{
       const token = localStorage.getItem('token')

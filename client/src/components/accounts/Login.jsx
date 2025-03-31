@@ -39,6 +39,7 @@ const Login = () => {
         else{
             response = await axios.post(`${API_URL}/user/signUp`,formData)
         }
+        
         if(response.data.success){
             localStorage.setItem('token',response.data.token)
             localStorage.setItem('name',response.data.name)
@@ -69,8 +70,10 @@ const Login = () => {
         setLoggedIn(false)
     }
     setLoading(false);
+    console.log(response)
     
-  };
+  }
+  ;
 
   return (
     <div className="h-screen bg-gray-200 flex items-center justify-center">
