@@ -44,7 +44,7 @@ const Login = () => {
             localStorage.setItem('token',response.data.token)
             localStorage.setItem('name',response.data.name)
             toast.success(response.data.msg,{
-                position: 'top-right',
+                position: 'top-left',
                 autoClose: 1000,
                 hideProgressBar: true,
                 closeOnClick: true,
@@ -58,7 +58,7 @@ const Login = () => {
     }
     catch(err){
         toast.error(err.response.data.msg,{
-            position: 'top-right',
+            position: 'top-left',
             autoClose: 1000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -69,9 +69,7 @@ const Login = () => {
             
         setLoggedIn(false)
     }
-    setLoading(false);
-    console.log(response)
-    
+    setLoading(false);    
   }
   ;
 

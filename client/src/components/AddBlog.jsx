@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useGlobal } from "./GlobalProvider";
 import {toast} from 'react-toastify'
 import {RotateLoader} from 'react-spinners'
+import {useNavigate} from 'react-router-dom'
 
 const AddBlog = () => {
   const { loading, setLoading, API_URL,isDarkMode } = useGlobal();
@@ -21,6 +22,8 @@ const AddBlog = () => {
     }
   };
 
+    const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -36,7 +39,7 @@ const AddBlog = () => {
         content: "",
       })
       toast.success(response.data.msg, {
-        position: "top-right",
+        position: "top-left",
         autoClose: 1000,
         hideProgressBar: true,
         closeOnClick: true,
@@ -44,9 +47,11 @@ const AddBlog = () => {
         draggable: true,
         theme: "dark",
       });
+      navigate('/myblog')
+
     } catch (err) {
       toast.error(err.response.data.msg,{
-        position: 'top-right',
+        position: 'top-left',
         autoClose: 1000,
         hideProgressBar: true,
         closeOnClick: true,
@@ -87,7 +92,6 @@ const AddBlog = () => {
           <input
             type="file"
             name="postImg"
-            required
             onChange={handleChange}
             className="w-full p-3 mb-4 border bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />

@@ -14,7 +14,7 @@ const Navbar = () => {
         localStorage.removeItem('name')
         setLoggedIn(false)
         toast.success('Successfully Logout',{
-            position: 'top-right',
+            position: 'top-left',
             autoClose: 1000,
             hideProgressBar: true,
             closeOnClick: true,

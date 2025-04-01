@@ -16,6 +16,11 @@ const blogSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
     },
+    writtenBy:{
+        type: String,
+    }
+    },{
+    timestamps: true,
 })
 
 const blogModels = mongoose.model("blog",blogSchema)
