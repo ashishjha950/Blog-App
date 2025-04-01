@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar'
 import MyBlog from './components/MyBlog'
 import AddBlog from './components/AddBlog'
+import RouteProtection from './components/RouteProtection'
 
 const App = () => {
   return (
@@ -18,8 +19,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/login' element={<Login/>} />
-          <Route path='/myblog' element={<MyBlog/>} />
-          <Route path='/addblog' element={<AddBlog/>} />
+          <Route path='/myblog' element={<RouteProtection><MyBlog/></RouteProtection>} />
+          <Route path='/addblog' element={<RouteProtection><AddBlog/></RouteProtection>} />
         </Routes>
       </Router>
       </GlobalProvider>
