@@ -1,9 +1,108 @@
-import React from 'react'
+import axios from "axios";
+import { useState } from "react";
+import { useGlobal } from "./GlobalProvider";
+import {toast} from 'react-toastify'
+import {RotateLoader} from 'react-spinners'
 
 const AddBlog = () => {
-  return (
-    <div className='bg-gray-200 mt-24'>AddBlog</div>
-  )
-}
+  const { loading, setLoading, API_URL,isDarkMode } = useGlobal();
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+    postImg: null,
+  });
 
-export default AddBlog
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (files) {
+      setFormData({...formData,postImg: files[0],});
+    } else {
+      setFormData({...formData,[name]: value,});
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${API_URL}/blog/postblog`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setFormData({
+        title: "",
+        content: "",
+      })
+      toast.success(response.data.msg, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
+    } catch (err) {
+      toast.error(err.response.data.msg,{
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: 'dark',
+      })
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div className={`${isDarkMode?'bg-gray-900':'bg-gray-200'} min-h-screen flex justify-center items-center`}>
+      {loading?<RotateLoader color={isDarkMode?'white':'black'}/>:(
+        <div className={`${isDarkMode?'bg-gray-400':'bg-white'} p-8 rounded-lg shadow-lg w-11/12 sm:w-2/3 lg:w-1/2`}>
+        <h1 className={`text-2xl font-bold text-center mb-6 ${isDarkMode?'text-white':'text-gray-800'}`}>
+          Create a New Blog
+        </h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="title"
+            required
+            placeholder="Blog Title"
+            value={formData.title}
+            onChange={handleChange}
+            className="w-full p-3 mb-4 border bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <textarea
+            type="text"
+            name="content"
+            required
+            placeholder="Blog Content"
+            value={formData.content}
+            onChange={handleChange}
+            className="w-full p-3 mb-4 border bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-32"
+          />
+          <input
+            type="file"
+            name="postImg"
+            required
+            onChange={handleChange}
+            className="w-full p-3 mb-4 border bg-white rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="submit"
+            className="w-full cursor-pointer py-3 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition duration-200"
+          >
+            Add Blog
+          </button>
+        </form>
+      </div>
+      )}
+      
+    </div>
+  );
+};
+
+export default AddBlog;

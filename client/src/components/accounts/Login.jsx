@@ -8,7 +8,7 @@ import {toast} from 'react-toastify'
 import {RotateLoader} from 'react-spinners'
 
 const Login = () => {
-  const { loading,setLoading, loggedIn, setLoggedIn,API_URL } = useGlobal();
+  const { loading,setLoading, setLoggedIn,API_URL,isDarkMode } = useGlobal();
   const [accounts, toogleAccount] = useState("login");
   const [formData, setFormData] = useState({
     name: "",
@@ -53,7 +53,7 @@ const Login = () => {
                 theme: 'dark',
               })
             setLoggedIn(true)
-            // navigate('/')
+            navigate('/')
         }
     }
     catch(err){
@@ -76,16 +76,16 @@ const Login = () => {
   ;
 
   return (
-    <div className="h-screen bg-gray-200 flex items-center justify-center">
+    <div className={`h-screen ${isDarkMode?'bg-gray-900':'bg-gray-200'} flex items-center justify-center`}>
         {loading?<RotateLoader />:(
-      <div className="rounded-2xl bg-white px-3 py-2 m-2 shadow-md">
+      <div className={`rounded-2xl ${isDarkMode?'bg-gray-400':'bg-white'} px-3 py-2 m-2 shadow-lg`}>
         {accounts === "login" ? (
           <form
-            className="bg-white p-6 max-w-sm mx-auto shadow-lg rounded-lg"
+            className="p-6 max-w-sm mx-auto rounded-lg"
             onSubmit={submitHandler}
           >
             <label
-              className="block text-sm font-medium text-gray-700"
+              className={`block text-sm font-medium ${isDarkMode?'text-white':'text-gray-700'}`}
               htmlFor="email"
             >
               Email
@@ -96,14 +96,14 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="my-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="my-1 block bg-w w-full bg-white border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your email"
               required
             />
   
             <div className="mt-4">
               <label
-                className="block text-sm font-medium text-gray-700"
+                className={`block text-sm font-medium ${isDarkMode?'text-white':'text-gray-700'}`}
                 htmlFor="password"
               >
                 Password
@@ -115,7 +115,7 @@ const Login = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pr-10"
+                  className="mt-1 block bg-white w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pr-10"
                   placeholder="Enter your password"
                   required
                 />
@@ -132,18 +132,18 @@ const Login = () => {
   
             <button
               type="submit"
-              className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+              className="mt-6 w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
             >
               Login
             </button>
           </form>
         ) : (
           <form
-            className="bg-white p-6 max-w-sm mx-auto shadow-lg rounded-lg"
+            className=" p-6 max-w-sm mx-auto shadow-lg rounded-lg"
             onSubmit={submitHandler}
           >
             <label
-              className="block text-sm font-medium text-gray-700"
+              className={`block text-sm font-medium ${isDarkMode?'text-white':'text-gray-700'}`}
               htmlFor="name"
             >
               Name
@@ -154,12 +154,12 @@ const Login = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 mb-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 mb-3 block w-full bg-white border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your name"
               required
             />
             <label
-              className="block text-sm font-medium text-gray-700"
+              className={`block text-sm font-medium ${isDarkMode?'text-white':'text-gray-700'}`}
               htmlFor="email"
             >
               Email
@@ -170,14 +170,14 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="my-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="my-1 block bg-w w-full bg-white border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your email"
               required
             />
   
             <div className="mt-4">
               <label
-                className="block text-sm font-medium text-gray-700"
+                className={`block text-sm font-medium ${isDarkMode?'text-white':'text-gray-700'}`}
                 htmlFor="password"
               >
                 Password
@@ -189,7 +189,7 @@ const Login = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pr-10"
+                  className="mt-1 block bg-white w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pr-10"
                   placeholder="Enter your password"
                   required
                 />
@@ -206,16 +206,16 @@ const Login = () => {
   
             <button
               type="submit"
-              className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+              className="mt-6 w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
             >
               Register
             </button>
           </form>
         )}
-        <span className="block text-center mt-4 text-gray-600">OR</span>
+        <span className={`block text-center mt-4 ${isDarkMode?'text-white':'text-gray-600'}`}>OR</span>
         <button
           onClick={handleAccountToogle}
-          className="cursor-pointer text-blue-500 hover:text-blue-600 underline transition-colors duration-200"
+          className={`cursor-pointer ${isDarkMode?'text-blue-900':'text-blue-500'} hover:text-blue-600 underline transition-colors duration-200`}
         >
           {accounts === "login"
             ? "Don't have an Account?"

@@ -6,7 +6,8 @@ const GlobalProvider = ({children}) => {
 
     const [loading,setLoading] = useState(false)
     const [loggedIn,setLoggedIn] = useState(false)
-    const API_URL = 'https://blog-app-jbra.onrender.com';
+    const [isDarkMode,setIsDarkMode] = useState(true)
+    const API_URL = 'http://localhost:8000';
 
     useEffect(()=>{
       const token = localStorage.getItem('token')
@@ -19,7 +20,7 @@ const GlobalProvider = ({children}) => {
     },[])
 
   return (
-    <GlobalContext.Provider value={{loading,setLoading,loggedIn,setLoggedIn,API_URL}}>
+    <GlobalContext.Provider value={{loading,setLoading,loggedIn,setLoggedIn,API_URL,isDarkMode,setIsDarkMode}}>
         {children}
     </GlobalContext.Provider>
   )

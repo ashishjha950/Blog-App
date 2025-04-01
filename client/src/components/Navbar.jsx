@@ -3,10 +3,11 @@ import logo from "../assets/logo.avif";
 import { NavLink } from "react-router-dom";
 import { useGlobal } from "./GlobalProvider";
 import {toast} from 'react-toastify'
+import { FaSun,FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
 
-    const {loggedIn, setLoggedIn} = useGlobal();
+    const {loggedIn, setLoggedIn,isDarkMode,setIsDarkMode} = useGlobal();
 
     const logout = ()=>{
         localStorage.removeItem('token')
@@ -24,14 +25,14 @@ const Navbar = () => {
     }
 
   return (
-    <div className="absolute w-full bg-white top-0">
+    <div className={`absolute w-full ${isDarkMode?'bg-black':'bg-white'} top-0`}>
       <div className="flex p-2 items-center justify-between">
-        <img width={100} src={logo} alt="logo" />
+        <img className="rounded-4xl" width={100} src={logo} alt="logo" />
         <div className="flex items-center gap-2 lg:gap-8 px-2">
           <NavLink
             className={({ isActive }) =>
               `${
-                isActive ? "text-red-700 text-md md:text-2xl" : "text-gray-700 text-sm md:text-xl"
+                isActive ? "text-red-700 text-md md:text-2xl" : `${isDarkMode?'text-white':'text-gray-700'} text-sm md:text-xl`
               } transition-all duration-500 `
             }
             to="/"
@@ -41,7 +42,7 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               `${
-                isActive ? "text-red-700 text-md md:text-2xl" : "text-gray-700 text-sm md:text-xl"
+                isActive ? "text-red-700 text-md md:text-2xl" : `${isDarkMode?'text-white':'text-gray-700'} text-sm md:text-xl`
               } transition-all duration-500 `
             }
             to="/myblog"
@@ -51,7 +52,7 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               `${
-                isActive ? "text-red-700 text-md md:text-2xl" : "text-gray-700 text-sm md:text-xl"
+                isActive ? "text-red-700 text-md md:text-2xl" : `${isDarkMode?'text-white':'text-gray-700'} text-sm md:text-xl`
               } transition-all duration-500 `
             }
             to="/addblog"
@@ -65,7 +66,7 @@ const Navbar = () => {
             <NavLink
             className={({ isActive }) =>
               `${
-                isActive ? "text-red-700 text-md md:text-2xl" : "text-gray-700 text-sm md:text-xl"
+                isActive ? "text-red-700 text-md md:text-2xl" : `${isDarkMode?'text-white':'text-gray-700'} text-sm md:text-xl`
               } transition-all duration-500 `
             }
             to="/login"
@@ -73,6 +74,10 @@ const Navbar = () => {
             Login
           </NavLink>            
           )}
+
+          <button onClick={()=>setIsDarkMode(!isDarkMode)} className="p-2 bg-white rounded-full cursor-pointer text-2xl">
+            {isDarkMode?<FaMoon/>:<FaSun/>}
+          </button>
 
         </div>
       </div>
