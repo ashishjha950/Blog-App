@@ -44,7 +44,7 @@ const Home = () => {
                     <h1 className={`text-3xl font-bold text-center ${isDarkMode?'text-white':'text-black'}`}>All Blogs</h1>
                     {loggedIn && <h4 className={`text-xl font-medium text-right ${isDarkMode?'text-white':'text-black'}`}>Hi! {localStorage.getItem('name')}</h4>}
                 </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 py-5 gap-3 ">
+            <div className="grid px-4 py-5 gap-3 ">
                 {fetchedData&&fetchedData.map((data)=>{
                     return <Card key={data._id} data={data}/>
                 })}

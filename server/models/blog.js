@@ -10,7 +10,7 @@ const blogSchema = mongoose.Schema({
         required: true,
     },
     imageUrl:{
-        type: Array,
+        type: String,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,

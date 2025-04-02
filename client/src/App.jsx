@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
+import { BrowserRouter as Router,Routes,Route,Navigate } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/accounts/Login'
 import { GlobalProvider } from './components/GlobalProvider'
@@ -21,6 +21,7 @@ const App = () => {
           <Route path='/login' element={<Login/>} />
           <Route path='/myblog' element={<RouteProtection><MyBlog/></RouteProtection>} />
           <Route path='/addblog' element={<RouteProtection><AddBlog/></RouteProtection>} />
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </Router>
       </GlobalProvider>

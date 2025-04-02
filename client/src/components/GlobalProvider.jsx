@@ -7,6 +7,7 @@ const GlobalProvider = ({children}) => {
     const [loading,setLoading] = useState(false)
     const [loggedIn,setLoggedIn] = useState(false)
     const [isDarkMode,setIsDarkMode] = useState(true)
+    const [editPostData, setEditPostData] = useState(null);
     const API_URL = 'http://localhost:8000';
 
     useEffect(()=>{
@@ -20,7 +21,7 @@ const GlobalProvider = ({children}) => {
     },[])
 
   return (
-    <GlobalContext.Provider value={{loading,setLoading,loggedIn,setLoggedIn,API_URL,isDarkMode,setIsDarkMode}}>
+    <GlobalContext.Provider value={{loading,setLoading,loggedIn,setLoggedIn,API_URL,isDarkMode,setIsDarkMode,editPostData, setEditPostData}}>
         {children}
     </GlobalContext.Provider>
   )

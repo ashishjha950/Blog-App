@@ -20,7 +20,7 @@ const RouteProtection = ({ children }) => {
         theme: "dark",
       });
     }
-  }, [loggedIn, navigate]);
+  }, [loggedIn]);
 
   return loggedIn && children;
 };
