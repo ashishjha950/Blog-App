@@ -153,7 +153,7 @@ const Card = ({ data }) => {
         isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
       } p-6 rounded-lg shadow-md transition duration-300 hover:shadow-lg flex flex-col md:flex-row gap-4 `}
     >
-      <div className="relative w-full max-w-xl">
+      <div className="relative w-full flex items-center justify-center max-w-xl">
         <img
           src={data.imageUrl || noImageAvailable}
           alt="post-img"
@@ -162,7 +162,7 @@ const Card = ({ data }) => {
       </div>
 
       <div className="flex items-start flex-col justify-between w-full">
-        <div>
+        <div className="flex flex-col gap-3">
           <h2 className="text-2xl font-bold">{data.title}</h2>
           <p className="text-sm text-gray-400">{data.content}</p>
         </div>
