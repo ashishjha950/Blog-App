@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../public/logo.png";
+import logo from "/logo.png";
 import { NavLink } from "react-router-dom";
 import { useGlobal } from "./GlobalProvider";
 import {toast} from 'react-toastify'
