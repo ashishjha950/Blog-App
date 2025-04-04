@@ -2,10 +2,10 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import connection from './db.js'
-import user from './routes/user.js'
-import blog from './routes/blog.js'
-import comment from './routes/comment.js'
+import connection from '../db.js'
+import user from '../routes/user.js'
+import blog from '../routes/blog.js'
+import comment from '../routes/comment.js'
 
 const app = express()
 dotenv.config()

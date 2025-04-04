@@ -8,7 +8,7 @@ const GlobalProvider = ({children}) => {
     const [loggedIn,setLoggedIn] = useState(false)
     const [isDarkMode,setIsDarkMode] = useState(true)
     const [editPostData, setEditPostData] = useState(null);
-    const API_URL = 'http://localhost:8000';
+    const API_URL = 'http://localhost:3000';
 
     useEffect(()=>{
       const token = localStorage.getItem('token')
