@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/logo.avif";
+import logo from "../../public/logo.png";
 import { NavLink } from "react-router-dom";
 import { useGlobal } from "./GlobalProvider";
 import {toast} from 'react-toastify'
@@ -30,7 +30,7 @@ const Navbar = () => {
     <div className={`absolute w-full ${isDarkMode?'bg-black':'bg-white'} top-0 py-2`}>
       <div className="flex p-2 items-center justify-between flex-col gap-2 md:flex-row">
         <button className="cursor-pointer" onClick={()=> navigate('/')}>
-        <img className="rounded-4xl w-18 md:w-28" src={logo} alt="logo" />
+        <img className="rounded-4xl w-28" src={logo} alt="logo" />
         </button>
         <div className="flex items-center justify-evenly w-full md:w-max gap-2 lg:gap-8 px-2">
           <NavLink
