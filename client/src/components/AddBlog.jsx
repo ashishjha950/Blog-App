@@ -101,7 +101,7 @@ const AddBlog = () => {
   };
 
   return (
-    <div className={`${isDarkMode?'bg-gray-900':'bg-gray-200'} min-h-screen flex justify-center items-center`}>
+    <div className={`${isDarkMode?'bg-gray-900':'bg-gray-200'} min-h-screen flex justify-center items-center mt-20 md:mt-5`}>
       {loading?<RotateLoader color={isDarkMode?'white':'black'}/>:(
         <div className={`${isDarkMode?'bg-gray-400':'bg-white'} p-8 mt-24 rounded-lg shadow-lg w-11/12 sm:w-2/3 lg:w-1/2`}>
         <h1 className={`text-2xl font-bold text-center mb-6 ${isDarkMode?'text-white':'text-gray-800'}`}>

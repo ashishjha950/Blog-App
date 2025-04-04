@@ -37,7 +37,7 @@ const Home = () => {
   },[])
 
   return (
-    <div className={`${isDarkMode?'bg-gray-900':'bg-gray-200'} min-h-screen pt-24 ${loading?'flex items-center justify-center w-full':''}`}>
+    <div className={`${isDarkMode?'bg-gray-900':'bg-gray-200'} min-h-screen pt-48 md:pt-32 ${loading?'flex items-center justify-center w-full':''}`}>
         {loading?<RotateLoader color={isDarkMode?'white':'black'}/>:(
             <div>
                 <div className="py-2 px-4">

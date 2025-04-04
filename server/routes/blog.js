@@ -5,7 +5,7 @@ import authenticateUser from '../middlewares/authenticateUser.js'
 const router = express.Router()
 
 router.get('/myblog',authenticateUser,getMyPosts)
-router.delete('/myblog:postId',authenticateUser,deletePost)
+router.delete('/myblog/:postId',authenticateUser,deletePost)
 router.get('/allblog',getAllPosts)
 router.post('/postblog',authenticateUser,upload.single('postImg'),uploadPost)
 router.patch('/updateblog/:postId',authenticateUser,upload.single('postImg'),updateblog)

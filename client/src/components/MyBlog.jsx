@@ -53,7 +53,7 @@ const MyBlog = () => {
         <RotateLoader color={isDarkMode ? "white" : "black"} />
       ) : (
         <div>
-          <div className="py-2 px-4">
+          <div className="py-2 px-4 mt-20 lg:mt-10">
             <h1
               className={`text-3xl font-bold text-center ${
                 isDarkMode ? "text-white" : "text-black"

@@ -94,4 +94,5 @@ const deletePost = async(req,res)=>{
   }
 }
 
+
 export {getMyPosts,uploadPost,getAllPosts,deletePost,updateblog}

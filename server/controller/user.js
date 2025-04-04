@@ -18,7 +18,7 @@ const loginUsers = async(req, res) => {
       .json({ msg: "Email or Password is wrong", success: false });
   }
   const token = jwt.sign(
-    { email: user.email, _id: user._id },
+    { name: user.name,email: user.email, _id: user._id },
     process.env.JWT_SECRET,
     { expiresIn: "24h" }
   ); 
@@ -47,7 +47,7 @@ const createUsers = async(req, res) => {
   user = await userModel.create({name,email,password:hashedPassword})
 
   const token = jwt.sign(
-    { email: user.email, _id: user._id },
+    { name: user.name,email: user.email, _id: user._id },
     process.env.JWT_SECRET,
     { expiresIn: "24h" }
   ); 

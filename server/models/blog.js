@@ -18,7 +18,19 @@ const blogSchema = mongoose.Schema({
     },
     writtenBy:{
         type: String,
-    }
+    },
+    likes:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'users',
+        }
+    ],
+    comments: [
+        {
+            text: String,
+            author: String,
+        }
+    ],
     },{
     timestamps: true,
 })
