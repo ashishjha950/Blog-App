@@ -105,7 +105,7 @@ const Home = () => {
 
               <button
                 type="submit"
-                className={`mt-3 px-4 py-2 rounded font-semibold transition-colors ${
+                className={`cursor-pointer mt-3 px-4 py-2 rounded font-semibold transition-colors ${
                   isDarkMode
                     ? "bg-blue-700 hover:bg-blue-800"
                     : "bg-blue-500 hover:bg-blue-600"
