@@ -3,7 +3,20 @@ import userModel from "../models/user.js";
 
 const getAllPosts =async(req,res)=>{
   try {
-    const myPosts = await blogModels.find({})
+    const {search,category} = req.body;
+    let myPosts;
+    if(category === 'all'){
+      myPosts = await blogModels.find({})
+    }
+    else if(category === 'author'){
+      myPosts = await blogModels.find({writtenBy:search})
+    }
+    else if(category === 'title'){
+      myPosts = await blogModels.find({title:search})
+    }
+    else{
+      myPosts = await blogModels.find({})
+    }
     res.status(200).json({myPosts})
   }catch(err){
     res.status(500).json({msg:'Server Error',success:false})    
